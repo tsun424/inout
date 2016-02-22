@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 page-title">
+  			<h1>Hi Xiaoming</h1>
+  			<p>Here you can manage all the activities currently in the system, and keep track of active activities.</p>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+	<div class="container-fluid page-content">
+		<div class="row">
+			<h2>All Activities</h2>
+		</div>
+		<div class="row">
+			<div class="content">
+				<table class="table table-striped table-hover table-bordered">
+					<thead>
+					<tr>
+					  <th>When</th>
+					  <th>Who</th>
+					  <th>Activity</th>
+					  <th>Status</th>
+					  <th>Duration</th>
+					  <th>Actions</th>
+					</tr>
+				   </thead>
+				   <tbody>
+				   		<tr ng-repeat="activity in activityArr">
+				   			<td>
+				   				<span>{{activity.start_time}} to {{activity.end_time}}</span>
+				   			</td>
+				   			<td>
+				   				<a href="#/user/{{activity.user_id}}">{{activity.user_name}}</a> for <a href="#">{{activity.user_group}}</a>
+				   			</td>
+				   			<td>
+				   				<span>{{activity.description}}</span>
+				   			</td>
+				   			<td>
+				   				<span>{{activity.status}}</span>
+				   			</td>
+				   			<td>
+				   				<span>{{activity.duration}}</span>
+				   			</td>
+				   			<td>
+				   				<span>actions</span>
+				   			</td>		
+				   		</tr>
+				   </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
