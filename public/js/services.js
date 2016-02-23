@@ -6,7 +6,7 @@ inOutServices.factory('dataService',function(){
 });
 
 inOutServices.factory('activityService',['$http',function($http){
-    var API_URI = '/inout/public/index.php';
+    var API_URI = '/public/index.php';
     return{
         get: function(){
             return $http.get(API_URI+'/activity');
