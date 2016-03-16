@@ -1,4 +1,4 @@
-var inOutApp = angular.module("inOutApp",['ngRoute','inOutControllers','inOutServices']);
+var inOutApp = angular.module("inOutApp",['ngRoute', 'ngAnimate', 'inOutControllers', 'inOutServices', 'ui.bootstrap']);
 
 inOutApp.config(['$routeProvider',
   function($routeProvider) {

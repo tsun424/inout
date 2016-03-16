@@ -1,45 +1,73 @@
 var inOutControllers = angular.module('inOutControllers',[]);
 
+inOutControllers.controller('bodyController',['$scope',function($scope){
+
+  $scope.isLeftOpen = false;
+  
+  $scope.clickMenu= function() {
+	$scope.isLeftOpen = !$scope.isLeftOpen;
+  };
+  
+}]);
+
 inOutControllers.controller('homeController',['$scope','activityService',function($scope,activityService){
-  /*
-    $scope.activityArr = [
-    {"startTime": "10:37am","endTime": "12:37pm","user": "Ben","userId": 1,"group": "test group","description":"this is a test activity","status":"Completed","duration": "2 hours"},
-    {"startTime": "11:37am","endTime": "01:37pm","user": "Ben","userId": 1,"group": "test group","description":"this is a test activity","status":"Completed","duration": "2 hours"},
-    {"startTime": "09:37am","endTime": "11:37am","user": "Ben","userId": 1,"group": "test group","description":"this is a test activity","status":"Completed","duration": "2 hours"},
-    {"startTime": "02:37pm","endTime": "05:37pm","user": "Ben","userId": 1,"group": "test group","description":"this is a test activity","status":"Completed","duration": "3 hours"}
-  ];
-  */
+
     activityService.get().success(function(data){
         $scope.activityArr = data
     });
 
 }]);
 
-inOutControllers.controller('newActivityController',['$scope',function($scope){
-  $scope.message = 'This is the home page';
+inOutControllers.controller('newActivityController',['$scope','activityService',function($scope,activityService){
+
+    //record new activity data
+    $scope.activityData = {};
+
+    $scope.saveActivity = function(){
+        //TODO: add loading effect during submit
+        return;
+        activityService.saveActivity($scope.activityData)
+            .then(function successCallback(response) {
+                alert('save successfully');
+                console.log(response);
+            }, function errorCallback(response) {
+                console.log(response);
+            });
+
+
+    }
+
+
 }]);
 
-inOutControllers.controller('headerController',['$scope','dataService',function($scope,dataService){
+inOutControllers.controller('headerController',['$scope', function($scope){
 
-  dataService.menuSelected = 0;
-  $scope.menuArr = [
-    {"name" : "Home","href" : "#/activity","iconClass" : "glyphicon glyphicon-home"},
-    {"name" : "New Activity","href" : "#/new_activity","iconClass" : "glyphicon glyphicon-plus-sign"},
-    {"name" : "Groups","href" : "#/","iconClass" : "glyphicon glyphicon-th-large"},
-    {"name" : "Xiaoming Yang","href" : "#/","iconClass" : "glyphicon glyphicon-user"},
-    {"name" : "Logout","href" : "#/","iconClass" : "glyphicon glyphicon-log-out"}
-  ];
-  $scope.select= function(item) {
-         dataService.menuSelected = item; 
-  };
-  $scope.isActive = function(item) {
-         return dataService.menuSelected === item;
-  };
-
-}]);
-
-inOutControllers.controller('userController',['$scope','$routeParams','dataService',function($scope,$routeParams,dataService){
-  dataService.menuSelected = -1;
-  $scope.userId = $routeParams.userId;
+	//menu can be generated danamically
+	$scope.menuArr = [
+	{"name" : "Dashboard","href" : "#/activity","iconClass" : "icon fa fa-tachometer"},
+	{"name" : "New Activity","href" : "#/new_activity","iconClass" : "icon fa fa-desktop"},
+	];
+	$scope.isRightOpen = false;
+	$scope.isMenuCollapsed = true;
+	$scope.menuSelected = 0;
+	$scope.breadcrumb = 'Dashboard';
+	
+	$scope.clickRight = function(){
+		$scope.isRightOpen = !$scope.isRightOpen;
+	};
+	
+	$scope.selectMenu = function(index){
+		if(index === $scope.menuSelected){
+			return;
+		}else{
+			$scope.menuSelected = index;
+			$scope.breadcrumb = $scope.menuArr[index].name;
+		}
+	};
+	
+	$scope.isMenuActive = function(item) {
+		return $scope.menuSelected == item;
+	};
+	
 
 }]);
