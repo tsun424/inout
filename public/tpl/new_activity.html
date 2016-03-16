@@ -1,1 +1,89 @@
-<p>this is the new activity page</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <h1 class="page-header">New Activity</h1>
+            <form class="form-horizontal" id="order_form" ng-submit="saveActivity()">
+                <div class="form-group">
+                    <label for="name" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Name</label>
+                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                        <input type="text" class="form-control" id="name" name="name" ng-model="activityData.name" placeholder="Name" required="required">
+                    </div>
+                    <label for="activity_type" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Activity Type</label>
+                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                        <select class="form-control" name="activity_type" ng-model="activityData.activity_type" id="activity_type">
+                            <option value="1">Annual Leave</option>
+                            <option value="2">Work Site</option>
+                            <option value="3">Meeting</option>
+                            <option value="4">Sick Leave</option>
+                            <option value="5">Travelling</option>
+                            <option value="6">Others</option>
+                        </select>
+                    </div>
+                </div>
+                <!--TODO: will confirm if another type is needed
+               <div class="form-group">
+                   <label for="activity_type" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Activity Type</label>
+                   <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                       <select class="form-control" name="activity_type" id="activity_type">
+                           <option value="1">Annual Leave</option>
+                           <option value="2">Work Site</option>
+                           <option value="3">Meeting</option>
+                           <option value="4">Sick Leave</option>
+                           <option value="5">Travelling</option>
+                           <option value="6">Others</option>
+                       </select>
+                   </div>
+
+                   <label for="another_type" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Another Type</label>
+                   <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                       <input type="text" class="form-control" id="another_type" name="another_type" placeholder="Input another activity type">
+                   </div>
+                </div>
+                -->
+                <div class="form-group">
+                    <label for="start_time" class=" col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Start Time</label>
+                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                        <input type="datetime-local" class="form-control" ng-model="activityData.start_time" id="start_time" name="start_time">
+                    </div>
+                    <label for="end_time" class=" col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">End Time</label>
+                    <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                        <input type="datetime-local" class="form-control" ng-model="activityData.end_time" id="end_time" name="end_time">
+                    </div>
+                    <div class="checkbox col-lg-1 col-md-1 col-xs-1 col-sm-1">
+                        <label>
+                            <input type="checkbox" name="un_end_time" id="un_end_time">Unknown
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Contact</label>
+                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                        <input type="text" class="form-control" id="contact" name="contact" ng-model="activityData.contact" placeholder="Contact">
+                    </div>
+                    <label for="notify_contact" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Notify Contact</label>
+                    <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                            <input type="checkbox" name="notify_contact" id="notify_contact"> Notify contact who has been selected
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="repeat_every" class="col-lg-2 col-md-2 col-xs-2 col-sm-2 control-label">Repeat</label>
+                    <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">
+                        <span>Every </span>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">
+                        <input type="text" class="form-control" id="repeat_every" name="repeat_every">
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+                        <select class="form-control" name="repeat_unit" id="repeat_unit">
+                            <option value="1">Days</option>
+                            <option value="2">Weeks</option>
+                        </select>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-lg btn-block btn-primary" value="Save"/>
+
+            </form>
+        </div>
+    </div>
+</div>
