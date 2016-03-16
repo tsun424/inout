@@ -121,7 +121,6 @@
             <span class="pull-right"><a href="#">Go Top <i class="fa fa-long-arrow-up"></i></a></span> &copy; 2016 Copyright.
         </div>
     </footer>
-    <div>
 
 	<!-- Javascript Libs -->
 	<script src="lib/Angular/angular.min.js"></script>
